@@ -464,13 +464,13 @@ async function buildEverything() {
   // eslint-disable-next-line no-for-of-loops/no-for-of-loops
   for (const bundle of Bundles.bundles) {
     await createBundle(bundle, UMD_DEV);
-    await createBundle(bundle, UMD_PROD);
-    await createBundle(bundle, NODE_DEV);
-    await createBundle(bundle, NODE_PROD);
-    await createBundle(bundle, FB_DEV);
-    await createBundle(bundle, FB_PROD);
-    await createBundle(bundle, RN_DEV);
-    await createBundle(bundle, RN_PROD);
+    // await createBundle(bundle, UMD_PROD);
+    // await createBundle(bundle, NODE_DEV);
+    // await createBundle(bundle, NODE_PROD);
+    // await createBundle(bundle, FB_DEV);
+    // await createBundle(bundle, FB_PROD);
+    // await createBundle(bundle, RN_DEV);
+    // await createBundle(bundle, RN_PROD);
   }
 
   await Packaging.copyAllShims();

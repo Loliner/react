@@ -602,6 +602,7 @@ export default function<T, P, I, TI, HI, PI, C, CC, CX, PL>(
     // We only have the top Fiber that was inserted but we need recurse down its
     // children to find all the terminal nodes.
     let node: Fiber = finishedWork;
+    // 深度优先算法遍历所有子节点并进行节点插入
     while (true) {
       if (node.tag === HostComponent || node.tag === HostText) {
         if (before) {
@@ -621,7 +622,7 @@ export default function<T, P, I, TI, HI, PI, C, CC, CX, PL>(
         // If the insertion itself is a portal, then we don't want to traverse
         // down its children. Instead, we'll get insertions from each child in
         // the portal directly.
-      } else if (node.child !== null) {
+      } else if (node.child !== null) { // 优先遍历子节点
         node.child.return = node;
         node = node.child;
         continue;
@@ -629,7 +630,7 @@ export default function<T, P, I, TI, HI, PI, C, CC, CX, PL>(
       if (node === finishedWork) {
         return;
       }
-      while (node.sibling === null) {
+      while (node.sibling === null) { // 然后再遍历兄弟节点
         if (node.return === null || node.return === finishedWork) {
           return;
         }
