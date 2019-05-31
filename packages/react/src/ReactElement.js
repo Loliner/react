@@ -110,7 +110,9 @@ function defineRefPropWarningGetter(props, displayName) {
 const ReactElement = function(type, key, ref, self, source, owner, props) {
   const element = {
     // This tag allow us to uniquely identify this as a React Element
-    $$typeof: REACT_ELEMENT_TYPE,
+    // 标识为一个 React Element（创建React Element不再通过 new 的方式，所以 instanceof 也不再管用）
+    // 对象字面量的方式并不比 new 要快多少，这样做的意义是什么？
+    $$typeof: REACT_ELEMENT_TYPE, 
 
     // Built-in properties that belong on the element
     type: type,

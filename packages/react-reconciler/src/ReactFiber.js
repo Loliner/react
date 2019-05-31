@@ -77,7 +77,7 @@ export type Fiber = {|
   // minimize the number of objects created during the initial render.
 
   // Tag identifying the type of fiber.
-  tag: TypeOfWork,
+  tag: TypeOfWork, // fiber的类型
 
   // Unique identifier of this child.
   key: null | string,
@@ -146,7 +146,7 @@ export type Fiber = {|
   // This is a pooled version of a Fiber. Every fiber that gets updated will
   // eventually have a pair. There are cases when we can clean up pairs to save
   // memory if we need to.
-  alternate: Fiber | null,
+  alternate: Fiber | null, // 在fiber更新时克隆出的镜像fiber，对fiber的修改会标记在这个fiber上
 
   // Conceptual aliases
   // workInProgress : Fiber ->  alternate The alternate used for reuse happens
